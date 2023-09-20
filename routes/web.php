@@ -1,9 +1,11 @@
 <?php
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 
+Auth::routes();
 
 Route::get('/', [ArticleController::class, 'index']);
 Route::get('/articles', [ArticleController::class, 'index']);
@@ -22,3 +24,9 @@ Route::get('/articles/delete/{id}', [ArticleController::class, 'delete']);
 Route::get('/articles/edit/{id}', [ArticleController::class, 'edit']);
 Route::put('/articles/edit/{id}', [ArticleController::class, 'update']);
 
+Route::post('/comments/add', [CommentController::class, 'create']);
+Route::get('/comments/delete/{id}', [CommentController::class, 'delete']);
+
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
